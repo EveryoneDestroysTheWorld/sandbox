@@ -1,0 +1,16 @@
+on: 
+  issues:
+    types: [opened]
+
+jobs:
+  issues-sync:
+    runs-on: ubuntu-latest
+    name: A job to say hello
+    steps:
+      - name: Sync issues with Discord
+        id: hello
+        uses: DaDragonDen/issues-sync@d8c034659a61e05600cd20f96bf0b1436545258b
+        with:
+          discord-token: ${{ secrets.ISSUES_SYNC_DISCORD_TOKEN }}
+          discord-channel-id: ${{ env.ISSUES_SYNC_DISCORD_CHANNEL_ID }}
+          project-id: ${{ env.ISSUES_SYNC_GITHUB_PROJECT_ID }}
